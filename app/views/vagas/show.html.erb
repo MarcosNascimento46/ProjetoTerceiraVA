@@ -1,0 +1,16 @@
+<h1>Detalhes da Vaga</h1>
+
+<p>
+  <strong>Título:</strong> <%= @vaga.titulo %>
+</p>
+
+<p>
+  <strong>Descrição:</strong> <%= @vaga.descricao %>
+</p>
+
+<p>
+  <strong>Empresa:</strong> <%= @vaga.empresa %>
+</p>
+
+<%= link_to 'Editar', edit_vaga_path(@vaga) %> |
+<%= link_to 'Voltar', vagas_path %>

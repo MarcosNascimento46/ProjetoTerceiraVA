@@ -1,9 +1,9 @@
-<%= form_with(model: @candidato, local: true) do |form| %>
-  <% if @candidato.errors.any? %>
+<%= form_with(model: @empregador, local: true) do |form| %>
+  <% if @empregador.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@candidato.errors.count, "erro") %> proibiram este candidato de ser salvo:</h2>
+      <h2><%= pluralize(@empregador.errors.count, "erro") %> proibiu este empregador de ser salvo:</h2>
       <ul>
-        <% @candidato.errors.full_messages.each do |message| %>
+        <% @empregador.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -23,6 +23,11 @@
   <div class="field">
     <%= form.label :telefone %>
     <%= form.telephone_field :telefone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :empresa %>
+    <%= form.text_field :empresa %>
   </div>
 
   <div class="actions">

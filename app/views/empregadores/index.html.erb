@@ -1,0 +1,30 @@
+<h1>Lista de Empregadores</h1>
+
+<%= link_to 'Novo Empregador', new_empregador_path, class: 'btn btn-primary' %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Empresa</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @empregadores.each do |empregador| %>
+      <tr>
+        <td><%= empregador.nome %></td>
+        <td><%= empregador.email %></td>
+        <td><%= empregador.telefone %></td>
+        <td><%= empregador.empresa %></td>
+        <td>
+          <%= link_to 'Ver', empregador_path(empregador) %> |
+          <%= link_to 'Editar', edit_empregador_path(empregador) %> |
+          <%= link_to 'Excluir', empregador_path(empregador), method: :delete, data: { confirm: 'Tem certeza?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
