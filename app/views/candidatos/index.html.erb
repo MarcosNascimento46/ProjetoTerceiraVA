@@ -1,0 +1,14 @@
+<h1>Lista de Candidatos</h1>
+
+<%= link_to 'Novo Candidato', new_candidato_path %>
+
+<ul>
+  <% @candidatos.each do |candidato| %>
+    <li>
+      <%= candidato.nome %> - <%= candidato.email %> - <%= candidato.telefone %>
+      <%= link_to 'Mostrar', candidato_path(candidato) %> |
+      <%= link_to 'Editar', edit_candidato_path(candidato) %> |
+      <%= link_to 'Excluir', candidato_path(candidato), method: :delete, data: { confirm: 'Tem certeza?' } %>
+    </li>
+  <% end %>
+</ul>

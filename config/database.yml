@@ -1,0 +1,30 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>  # Pool de conexões com o banco
+  timeout: 5000  # Timeout para as conexões (em milissegundos)
+
+development:
+  <<: *default
+  database: projeto_terceira_va_development
+  username: postgres  # Nome de usuário padrão do PostgreSQL (ajuste conforme seu ambiente)
+  password: 123456  # Defina sua senha de desenvolvimento aqui (evite deixar este campo visível no código)
+  host: localhost  # Conexão local
+  port: 5432  # Porta padrão do PostgreSQL
+
+test:
+  <<: *default
+  database: projeto_terceira_va_test
+  username: postgres
+  password: 123456
+  host: localhost
+  port: 5432
+
+production:
+  <<: *default
+  database: projeto_terceira_va_production
+  username: projeto_terceira_va
+  password: <%= ENV["PROJETO_TERCEIRA_VA_DATABASE_PASSWORD"] %>  # Para maior segurança, use variáveis de ambiente em produção
+  host: <%= ENV["PROJETO_TERCEIRA_VA_DATABASE_HOST"] || "localhost" %>  # O host pode ser configurado por variáveis de ambiente
+  port: 5432  # A porta padrão, ou modifique conforme necessário
+  sslmode: prefer  # Opção para SSL, importante em ambientes de produção

@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: projeto_terceira_va
+    env: ruby
+    buildCommand: "bundle install"
+    startCommand: "rails server -b 0.0.0.0 -p 10000"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: projeto_terceira_va_db
+          property: connectionString
+    plan: starter
+    autoDeploy: true
+
+  - type: postgres
+    name: projeto_terceira_va_db
+    plan: free
+    databases:
+      - projeto_terceira_va_production
