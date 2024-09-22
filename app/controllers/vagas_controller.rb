@@ -45,4 +45,3 @@ class VagasController < ApplicationController
       params.require(:vaga).permit(:titulo, :descricao, :empresa)
     end
   end
-s  
