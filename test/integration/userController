@@ -1,0 +1,20 @@
+require 'test_helper'
+
+class LoginTest < ActionDispatch::IntegrationTest
+  test "deve fazer login com credenciais válidas" do
+    user = users(:one)
+    post user_session_url, params: { user: { email: user.email, password: 'password123' } }
+    assert_redirected_to root_path
+  end
+
+  test "não deve fazer login com credenciais inválidas" do
+    post user_session_url, params: { user: { email: "invalid@example.com", password: "wrongpassword" } }
+    assert_response :unprocessable_entity
+  end
+
+  test "deve redirecionar usuário logado" do
+    sign_in users(:one)
+    get root_url
+    assert_response :success
+  end
+end
